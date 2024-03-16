@@ -24,13 +24,12 @@ function getPlayerChoice(){
             case 'r':
                 x = false;
                 return playerChoice = "rock"
-                break;
             case 'p':
                 x = false;
-                return playerChoice = 'paper';
+                return playerChoice = 'paper'
             case 's':
                 x = false;
-                return playerChoice = 'scissors';
+                return playerChoice = 'scissors'
             default:
                 playerChoice = prompt("Please select 'r' for rock, 'p' for paper or 's' for scissors");
         }
@@ -39,7 +38,16 @@ function getPlayerChoice(){
 }
 // function playRound(playerSelection, computerSelection)
     //Return a string of who won based on the input player selection and the random computer selection
+function playRound(playerSelection, computerSelection){
+    if (playerSelection == computerSelection){
+        return 'You tied'
+    } else if (playerSelection == 'rock') {
+        switch (computerSelection) {
+            case "paper":
+                return `You lose! ${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)} beats rock!`
+        }
+    }
+}
 
 //function playFiveRounds
     //keep score of overall winner and loser
-    
