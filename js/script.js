@@ -45,9 +45,27 @@ function playRound(playerSelection, computerSelection){
         switch (computerSelection) {
             case "paper":
                 return `You lose! ${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)} beats rock!`
+            case "scissors":
+                return `You win! Rock beats ${computerSelection}!`
+        }
+    } else if (playerSelection == "paper") {
+        switch (computerSelection) {
+            case "scissors":
+                return `You lose! Scissors beats paper!`
+            case "rock":
+                return "You win!  Paper beats rock"
+        } 
+    } else if (playerSelection == "scissors") {
+        switch (computerSelection) {
+            case "rock":
+                return "You lose!  Rock beats scissors"
+            case "paper":
+                return "You win!  Scissors beats paper"
         }
     }
 }
+
+console.log(playRound(getPlayerChoice(), getComputerChoice()));
 
 //function playFiveRounds
     //keep score of overall winner and loser
