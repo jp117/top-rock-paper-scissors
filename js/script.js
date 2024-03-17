@@ -65,7 +65,29 @@ function playRound(playerSelection, computerSelection){
     }
 }
 
-console.log(playRound(getPlayerChoice(), getComputerChoice()));
+//console.log(playRound(getPlayerChoice(), getComputerChoice()));
 
 //function playFiveRounds
     //keep score of overall winner and loser
+
+function playFiveRounds() {
+    let i = 0;
+    let wins = 0;
+    let ties = 0;
+    let losses = 0;
+    while (i < 5) {
+        let round = playRound(getPlayerChoice(), getComputerChoice());
+        console.log(round);
+        if (round.charAt(4) == "l") {
+            losses++;
+        } else if (round.charAt(4) == "w") {
+            wins++;
+        } else {
+            ties++;
+        }
+        console.log(`Wins: ${wins}, Losses: ${losses}, Ties: ${ties}`)
+        i++;
+    }
+}
+
+playFiveRounds();
