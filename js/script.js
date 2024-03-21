@@ -65,11 +65,6 @@ function playRound(playerSelection, computerSelection){
     }
 }
 
-//console.log(playRound(getPlayerChoice(), getComputerChoice()));
-
-//function playFiveRounds
-    //keep score of overall winner and loser
-
 function playFiveRounds() {
     let i = 0;
     let wins = 0;
@@ -90,4 +85,58 @@ function playFiveRounds() {
     }
 }
 
-playFiveRounds();
+function disableButtons(){
+  document.getElementById("rock").disabled = true;
+  document.getElementById("paper").disabled = true;
+  document.getElementById("scissors").disabled = true;
+}
+
+const end = document.createElement("h1");
+const body = document.body;
+
+let wins = 0;
+let ties = 0;
+let losses = 0;
+
+function updateScore(){
+  let winScore = document.getElementById("wins");
+  winScore.textContent = `Wins: ${wins}`;
+  let tieScore = document.getElementById("ties");
+  tieScore.textContent = `Ties: ${ties}`;
+  let lossScore = document.getElementById("losses");
+  lossScore.textContent = `Losses: ${losses}`;
+
+  if(wins == 5){
+    disableButtons();
+    end.textContent = "You win!";
+    body.appendChild(end);
+  } else if (losses == 5){
+    disableButtons();
+    end.textContent = "You lose!";
+    body.appendChild(end);
+  }
+}
+
+function score(round){
+  if(round.charAt(4) == "l"){
+    losses = losses+1;
+  } else if (round.charAt(4) == "w"){
+    wins = wins+1;
+  } else {
+    ties = ties +1;
+  }
+  updateScore();
+}
+
+document.getElementById("rock").onclick = function() {
+  let play = playRound("rock", getComputerChoice());
+  score(play);
+}
+document.getElementById("paper").onclick = function () {
+  let play = playRound("paper", getComputerChoice());
+  score(play);
+}
+document.getElementById("scissors").onclick = function () {
+  let play = playRound("scissors", getComputerChoice());
+  score(play);
+}
